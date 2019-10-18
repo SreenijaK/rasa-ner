@@ -61,7 +61,7 @@ class CRFEntityExtractor(EntityExtractor):
             ["bias", "low", "prefix5", "prefix2", "suffix5", "suffix3",
              "suffix2", "upper", "title", "digit", "pattern", "pos", 'wordVec'],
             ["bias", "low", "prefix5", "prefix2", "suffix5", "suffix3",
-             "suffix2", "upper", "title", "digit", "pattern", "pos", 'wordVec']],
+             "suffix2", "upper", "title", "digit", "pattern", "pos", 'wordVec' ]],
         # The maximum number of iterations for optimization algorithms.
         "max_iterations": 50,
         # weight of theL1 regularization
