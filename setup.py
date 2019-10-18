@@ -1,33 +1,16 @@
-import os
-
-from setuptools import setup, find_packages
-
-here = os.path.abspath(os.path.dirname(__file__))
-
-# Avoids IDE errors, but actual version is read from version.py
-__version__ = None
-with open("rasa/version.py") as f:
-    exec (f.read())
-
-# Get the long description from the README file
-with open(os.path.join(here, "README.md"), encoding="utf-8") as f:
-    long_description = f.read()
-
-tests_requires = [
-    "pytest~=4.5",
-    "pytest-cov~=2.7",
-    "pytest-localserver~=0.5.0",
-    "pytest-sanic~=1.0.0",
-    "responses~=0.9.0",
-    "freezegun~=0.3.0",
-    "nbsphinx>=0.3",
-    "aioresponses~=0.6.0",
-    "moto~=1.3.8",
-    "fakeredis~=1.0",
-]
-
-install_requires = [
-    "requests>=2.20",
+from distutils.core import setup
+setup(
+  name = 'rasa-ner',         # How you named your package folder (MyLib)
+  packages = ['rasa-ner'],   # Chose the same as "name"
+  version = '0.1',      # Start with a small number and increase it with every change you make
+  license='MIT',        # Chose a license from here: https://help.github.com/articles/licensing-a-repository
+  description = 'TYPE YOUR DESCRIPTION HERE',   # Give a short description about your library
+  author = 'YOUR NAME',                   # Type in your name
+  author_email = 'your.email@domain.com',      # Type in your E-Mail
+  url = 'https://github.com/user/reponame',   # Provide either the link to your github or to your website
+  download_url = 'https://github.com/SreenijaK/rasa-ner/archive/1.tar.gz',    # I explain this later on
+  keywords = ['SOME', 'MEANINGFULL', 'KEYWORDS'],   # Keywords that define your package best
+  install_requires=["requests>=2.20",
     "boto3~=1.9",
     "matplotlib~=3.0",
     "attrs>=18",
@@ -87,59 +70,22 @@ install_requires = [
     # remove when tensorflow@1.15.x or a pre-release patch is released
     # https://github.com/tensorflow/tensorflow/issues/32319
     "gast==0.2.2",
-]
+      ],
+#       extras_requires = {
+#     "test": tests_requires,
+#     "spacy": ["spacy>=2.1,<2.2"],
+#     "mitie": ["mitie"],
+#     "sql": ["psycopg2~=2.8.2", "SQLAlchemy~=1.3"],
+# },
 
-extras_requires = {
-    "test": tests_requires,
-    "spacy": ["spacy>=2.1,<2.2"],
-    "mitie": ["mitie"],
-    "sql": ["psycopg2~=2.8.2", "SQLAlchemy~=1.3"],
-}
-
-setup(
-    name="rasa",
-    classifiers=[
-        "Development Status :: 4 - Beta",
-        "Intended Audience :: Developers",
-        "License :: OSI Approved :: Apache Software License",
-        # supported python versions
-        "Programming Language :: Python",
-        "Programming Language :: Python :: 3.6",
-        "Programming Language :: Python :: 3.7",
-        "Topic :: Software Development :: Libraries",
-    ],
-    python_requires=">=3.6",
-    packages=find_packages(exclude=["tests", "tools", "docs", "contrib"]),
-    entry_points={"console_scripts": ["rasa=rasa.__main__:main"]},
-    version=__version__,
-    install_requires=install_requires,
-    tests_require=tests_requires,
-    extras_require=extras_requires,
-    include_package_data=True,
-    description="Open source machine learning framework to automate text- and "
-    "voice-based conversations: NLU, dialogue management, connect to "
-    "Slack, Facebook, and more - Create chatbots and voice assistants",
-    long_description=long_description,
-    long_description_content_type="text/markdown",
-    author="Rasa Technologies GmbH",
-    author_email="hi@rasa.com",
-    maintainer="Tom Bocklisch",
-    maintainer_email="tom@rasa.com",
-    license="Apache 2.0",
-    keywords="nlp machine-learning machine-learning-library bot bots "
-    "botkit rasa conversational-agents conversational-ai chatbot"
-    "chatbot-framework bot-framework",
-    url="https://rasa.com",
-    download_url="https://github.com/RasaHQ/rasa/archive/{}.tar.gz"
-    "".format(__version__),
-    project_urls={
-        "Bug Reports": "https://github.com/rasahq/rasa/issues",
-        "Source": "https://github.com/rasahq/rasa",
-    },
+  classifiers=[
+    'Development Status :: 3 - Alpha',      # Chose either "3 - Alpha", "4 - Beta" or "5 - Production/Stable" as the current state of your package
+    'Intended Audience :: Developers',      # Define that your audience are developers
+    'Topic :: Software Development :: Build Tools',
+    'License :: OSI Approved :: MIT License',   # Again, pick a license
+    'Programming Language :: Python :: 3',      #Specify which pyhton versions that you want to support
+    'Programming Language :: Python :: 3.4',
+    'Programming Language :: Python :: 3.5',
+    'Programming Language :: Python :: 3.6',
+  ],
 )
-
-print ("\nWelcome to Rasa!")
-print (
-    "If you have any questions, please visit our documentation page: https://rasa.com/docs/"
-)
-print ("or join the community discussions on https://forum.rasa.com/")
